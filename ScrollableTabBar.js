@@ -12,6 +12,7 @@ const {
   Dimensions,
 } = ReactNative;
 const Button = require('./Button');
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const WINDOW_WIDTH = Dimensions.get('window').width;
 
@@ -132,14 +133,19 @@ const ScrollableTabBar = createReactClass({
     return <Button
       key={`${name}_${page}`}
       accessible={true}
-      accessibilityLabel={name}
+      accessibilityLabel={name.label}
       accessibilityTraits='button'
       onPress={() => onPressHandler(page)}
       onLayout={onLayoutHandler}
     >
-      <View style={[styles.tab, this.props.tabStyle, ]}>
+          <View style={[styles.tab, this.props.tabStyle, ]}>
+          <Icon
+      name={name.icon}
+      size={30}
+      color={isTabActive ? 'rgba(255,255,255,1.0)' : 'rgba(255 ,255, 255, 0.5)'}
+                />
         <Text style={[{color: textColor, fontWeight, }, textStyle, ]}>
-          {name}
+          {name.label}
         </Text>
       </View>
     </Button>;
@@ -220,14 +226,17 @@ module.exports = ScrollableTabBar;
 
 const styles = StyleSheet.create({
   tab: {
-    height: 49,
+    flex:1,
+    flexDirection: 'column',
+    height: 60,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     paddingLeft: 20,
     paddingRight: 20,
+
   },
   container: {
-    height: 50,
+    height: 65,
     borderWidth: 1,
     borderTopWidth: 0,
     borderLeftWidth: 0,
