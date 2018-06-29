@@ -13,6 +13,7 @@ const {
 } = ReactNative;
 const Button = require('./Button');
 import Icon from 'react-native-vector-icons/Ionicons';
+import MDIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const WINDOW_WIDTH = Dimensions.get('window').width;
 
