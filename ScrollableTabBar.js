@@ -139,17 +139,26 @@ const ScrollableTabBar = createReactClass({
       onLayout={onLayoutHandler}
     >
           <View style={[styles.tab, this.props.tabStyle, ]}>
+          <View>
           <Icon
       name={name.icon}
       size={30}
       color={isTabActive ? 'rgba(255,255,255,1.0)' : 'rgba(255 ,255, 255, 0.5)'}
-                />
-        <Text style={[{color: textColor, fontWeight, }, textStyle, ]}>
-          {name.label}
-        </Text>
+          />
+          { name.missing && <MDIcon
+           name="circle"
+           size={15}
+           color={'rgba(241,195,36,1.0)'}
+           style={[{position : "absolute", right : -15, top : 0}]}
+           /> }
       </View>
+          <Text style={[{color: textColor, fontWeight, }, textStyle, ]}>
+          {name.label}
+      </Text>
+         </View>
     </Button>;
   },
+
 
   measureTab(page, event) {
     const { x, width, height, } = event.nativeEvent.layout;
